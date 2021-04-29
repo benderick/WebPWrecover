@@ -1,0 +1,42 @@
+﻿@page
+@model LogoutModel
+
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@using System;
+@using System.Collections.Generic;
+@using System.ComponentModel.DataAnnotations;
+@using System.Linq;
+@using System.Threading.Tasks;
+@using Microsoft.AspNetCore.Mvc;
+@using Microsoft.AspNetCore.Mvc.RazorPages;
+@using Microsoft.Extensions.Logging;
+
+
+@{
+    ViewData["Title"] = "退出";
+}
+
+
+
+    <header id="hp">
+        <h1>@ViewData["Title"]</h1>
+        <p>你已成功退出，3秒后跳转到游客页。</p>
+    </header>
+
+
+
+    <script language="javascript">
+        var num = 3; //倒计时的秒数
+        var URL = "/";
+        var id = window.setInterval('doUpdate()', 1000);
+        function doUpdate() {
+            if (num == 0) {
+                window.clearInterval(id);
+                window.location = URL;
+            }
+            num--;
+        }
+    </script>
+

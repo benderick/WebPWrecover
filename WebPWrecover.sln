@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31205.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebPWrecover", "WebPWrecover\WebPWrecover.csproj", "{D9546FC6-8301-466C-AF17-DE4E3B67F1ED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D9546FC6-8301-466C-AF17-DE4E3B67F1ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9546FC6-8301-466C-AF17-DE4E3B67F1ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9546FC6-8301-466C-AF17-DE4E3B67F1ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9546FC6-8301-466C-AF17-DE4E3B67F1ED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BAAE7308-F847-4C04-B370-4FE2DC499EC5}
+	EndGlobalSection
+EndGlobal

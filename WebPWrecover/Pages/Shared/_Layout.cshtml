@@ -1,0 +1,131 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@using System;
+@using System.Collections.Generic;
+@using System.ComponentModel.DataAnnotations;
+@using System.Linq;
+@using System.Threading.Tasks;
+@using Microsoft.AspNetCore.Mvc;
+@using Microsoft.AspNetCore.Mvc.RazorPages;
+@using Microsoft.Extensions.Logging;
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - 云上智科</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <style type="text/css">
+        .dropdown {
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+        }
+
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        #tp {
+            background-color: #eef5fe !important;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="ttt navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3" id="tp">
+            <div class="container">
+
+
+                <a class="navbar-brand" asp-area="" asp-page="/Index">云上智科</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <partial name="_LoginPartial" />
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                <div class="navbar-nav flex-grow-1">
+                    <div class="dropdown">
+                        <a class="nav-link text-dark" asp-area="" asp-page="/校园服务">校园服务</a>
+                        <div class="dropdown-content">
+                            <a class="nav-link text-dark" href="">一卡通</a>
+                            <a class="nav-link text-dark" href="">跳蚤市场</a>
+                            <a class="nav-link text-dark" href="">失物招领</a>
+                            <a class="nav-link text-dark" href="">兼职信息</a>
+                        </div>
+                    </div>
+
+                    <div class="dropdown">
+                        <a class="nav-link text-dark" asp-area="" asp-page="/前程似锦">前程似锦</a>
+                        <div class="dropdown-content">
+                            <a class="nav-link text-dark" href="">就业无忧</a>
+                            <a class="nav-link text-dark" href="">升本考研</a>
+                            <a class="nav-link text-dark" href="">出国留学</a>
+                        </div>
+                    </div>
+
+                    <div class="dropdown">
+                        <a class="nav-link text-dark" asp-area="" asp-page="/新生专区">新生专区</a>
+                        <div class="dropdown-content">
+                            <a class="nav-link text-dark" href="">行在青稞</a>
+                            <a class="nav-link text-dark" href="">吃在科大</a>
+                            <a class="nav-link text-dark" href="">青稞宿舍</a>
+                        </div>
+                    </div>
+
+                    <div class="dropdown">
+                        <a class="nav-link text-dark" asp-area="" asp-page="/校内交流">校内交流</a>
+                        <div class="dropdown-content">
+                            <a class="nav-link text-dark" href="">畅所欲言</a>
+                            <a class="nav-link text-dark" href="">学习经验</a>
+                        </div>
+                    </div>
+
+                    <!--  UserManager.GetUserName(User)   -->
+             
+
+
+                </div>
+                    }
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <footer class="border-top footer text-muted">
+            <div class="container">
+                &copy; 2021 - 云上智科 -<a asp-area="" asp-page="/Privacy"> 关于我们:22组</a>
+            </div>
+        </footer>
+    }
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

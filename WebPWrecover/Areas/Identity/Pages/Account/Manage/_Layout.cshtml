@@ -1,0 +1,40 @@
+﻿@{
+    if (ViewData.TryGetValue("ParentLayout", out var parentLayout))
+    {
+        Layout = (string)parentLayout;
+    }
+    else
+    {
+        Layout = "/Areas/Identity/Pages/_Layout.cshtml";
+    }
+}
+
+<style>
+    #ti {
+        margin-top: 150px;
+        margin-left: 100px;
+    }
+        
+
+    body {
+        background-color: #F5F5F5;
+    }
+</style>
+
+
+<div>
+
+
+    <div class="row" id="ti">
+        <div class="col-md-3">
+            <partial name="_ManageNav" />
+        </div>
+        <div class="col-md-9">
+            @RenderBody()
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @RenderSection("Scripts", required: false)
+}

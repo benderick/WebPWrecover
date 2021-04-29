@@ -1,0 +1,93 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "登录";
+}
+
+<style>
+    #hi {
+        margin-left: 200px;
+        margin-top: 150px;
+    }
+</style>
+
+<div class="row" id="hi">
+    <div class="col-md-4">
+        <section>
+            <form id="account" method="post">
+                <h4>本地登录</h4>
+                <hr />
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Input.Email"></label>
+                    <input asp-for="Input.Email" class="form-control" />
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.Password"></label>
+                    <input asp-for="Input.Password" class="form-control" />
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label asp-for="Input.RememberMe">
+                            <input asp-for="Input.RememberMe" />
+                            @Html.DisplayNameFor(m => m.Input.RememberMe)
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">登录</button>
+                </div>
+                <div class="form-group">
+                    <p>
+                        <a id="forgot-password" asp-page="./ForgotPassword">忘记密码?</a>
+                    </p>
+                    <p>
+                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">注册新账户</a>
+                    </p>
+                </div>
+            </form>
+        </section>
+    </div>
+    <div class="col-md-6 col-md-offset-2">
+        <section>
+            <h4>第三方登录</h4>
+            <hr />
+            @{
+                if ((Model.ExternalLogins?.Count ?? 0) == 0)
+                {
+                    <div>
+                        <p>
+                            以后会集成比如QQ、智慧青科大等第三方登录接口。
+                        </p>
+                    </div>
+            
+            <div class="logo">
+                <a href="https://open.weixin.qq.com/connect/qrconnect?appid=wx8b6c0245e6c3b038&redirect_uri=https%3A%2F%2Fhwid1.vmall.com%2FCAS%2Fweixin%2Freturn&response_type=code&scope=snsapi_login&state=as3Cyu3rBASxts4VMCvCxkS8tXQDatjs#wechat_redirect" class="ao"></a>
+                <a href="https://weibo.com/?sudaref=www.baidu.com&display=0&retcode=6102" class="at"></a>
+                <a href="https://graph.qq.com/oauth2.0/show?which=Login&display=pc&client_id=209207&redirect_uri=https://hwid1.vmall.com/CAS/qq/return&response_type=code&state=fPLvUdVRQwCZ27jPFbn5MCVjZ8xp27rh&scope=get_user_info,add_topic,add_one_blog,add_album,upload_pic,list_album,add_share,check_page_fans,add_t,add_pic_t,del_t,get_repost_list,get_info,get_other_info,get_fanslist,get_idollist,add_idol,del_ido,get_tenpay_addr" class="as"></a>
+            </div>
+        }
+        else
+        {
+            <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+                <div>
+                    <p>
+                        @foreach (var provider in Model.ExternalLogins)
+                        {
+                            <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="请使用 @provider.DisplayName 账户">@provider.DisplayName</button>
+                        }
+                    </p>
+                </div>
+            </form>
+        }
+            }
+            </section>
+        </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
